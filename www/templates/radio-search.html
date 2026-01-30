@@ -1,0 +1,60 @@
+
+<div id="context-menu-radio-browser" class="context-menu">
+		<ul class="dropdown-menu context-menu" role="menu">
+			<li><a href="#notarget" data-cmd="station2db"><i class="fal fa-plus sx"></i> Add</a></li>
+        </ul>
+</div>
+
+<div id="container">
+<div class="container">
+<h1 class="lib-config">Search <a href="https://www.radio-browser.info">radio-browser.info</a></h1>
+    <div class="control-group">
+    <span class="controls">
+        <button class="btn btn-medium config-btn-set btn-primary"><i class="far
+        fa-arrow-up sx" onclick="bwd_clicked()"></i></button>
+        <button class="btn btn-medium config-btn-set btn-primary"><i class="far
+        fa-arrow-down sx" onclick="fwd_clicked()"></i></button>
+        <button class="btn btn-medium config-btn-set btn-primary" onclick="clicky()">click-button</button>
+        <input id="search-term" class="config-input-large" type="text" placeholder="search"
+        onkeydown="search_on_enter(event)">
+
+        <select class="config-select-yn" id="rbs-type">
+            <option value="name" selected>name</option>
+            <option value="tag">tag</option>
+        </select>
+
+        <button id="poop" class="btn btn-medium config-btn-set btn-primary" type="button"
+        onclick="search_clicked()">Search</button>
+        
+        <select class="config-select-yn" style="display:hide;" id="rbs-bitrate">
+            <option value="128" selected disabled style="display:none;" style="font-size:5px;">kbps</option>
+            <option value="">All</option>
+            <option value="64">64</option>
+            <option value="96">96</option>
+            <option value="128">128</option>
+            <option value="192">192</option>
+            <option value="256">256</option>
+            <option value="320">320</option>
+        </select>
+    
+        <select class="config-select-yn" id="rbs-codec">
+            <option value="" selected disabled style="display:none;">Codec</option>
+            <option value="">All</option>
+            <option value="MP3">MP3</option>
+            <option value="AAC">AAC</option>
+        </select>
+        
+        <select class="config-select-yn" id="countrycode">
+            <option value="" selected disabled style="display:none;">Region</option>
+            <option value="">All</option>
+        </select>
+    </span>
+    </div>
+    <div>
+        <ul id="stations-list"  class="database">
+
+        </ul>
+    </div>
+
+</div>
+</div>

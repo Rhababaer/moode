@@ -58,6 +58,8 @@
 				<li><a href="per-config.php" class="btn btn-large"><i class="fa-solid fa-sharp fa-display"></i><br>Peripherals</a></li>
 				<li><a href="mpd-config.php" class="btn btn-large"><i class="fa-solid fa-sharp fa-play"></i><br>MPD</a></li>
 				<li><a href="cdsp-config.php" class="btn btn-large"><i class="fa-solid fa-sharp fa-square-sliders-vertical"></i><br>CamillaDSP</a></li>
+				<li><a href="radio-search.php" class="btn btn-large"><i class="fa-solid fa-sharp
+                fa-tower-cell"></i><br>RadioSearch</a></li>
 				<?php if ($_SESSION['feat_bitmask'] & FEAT_MULTIROOM) { ?>
 					<li><a href="trx-config.php" class="btn btn-large"><i class="fa-solid fa-sharp fa-speakers"></i><br>Multiroom</a></li>
 				<?php } ?>

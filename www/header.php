@@ -88,6 +88,12 @@
 		<script src="js/scripts-library.js" defer></script>
 		<script src="js/scripts-panels.js" defer></script>
 		<!-- endbuild -->
+	<!-- Radio Search -->
+	<?php } elseif ($section == 'radio-search') { ?>
+		<!-- build:js js/radiosearch.min.js defer -->
+		<script src="js/bootstrap-contextmenu.js" defer></script>
+		<script src="js/radio-search.js" defer></script>
+		<!-- endbuild -->
 	<!-- Configs -->
 	<!--removeIf(GENINDEXDEV)-->
 	<?php } else { ?>
