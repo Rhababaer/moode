@@ -1,3 +1,16 @@
+# Fork Goal
+
+This Fork aims to add a browser to add radio stations from the radio-browser.info community database to moode
+without the need to manually add stations.
+
+TODOS:
+- page with search mask integrated into regular ui
+- add/play/favorite directly from new page
+- send telemetry to radio-browser.info
+  - client used
+  - station added to favorites
+  - station played
+
 # moOde audio player
 
 moOde provides a beautifully designed and responsive user interface, an extensive set of Audiophile-grade features, a reliable and stable OS  and a friendly, active user Forum that provides expert troubleshooting and support, interesting discussion on a variety of audio topics and an International community of audio enthusiasts.
