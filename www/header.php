@@ -38,7 +38,7 @@
 	<link href="css/fa-sharp-regular.css" rel="stylesheet">
 	<link href="css/fa-sharp-solid.css" rel="stylesheet">
 	<link href="css/fa-solid.css" rel="stylesheet">
-	<<!--link href="css/fa-thin.css" rel="stylesheet"-->
+	<!--link href="css/fa-thin.css" rel="stylesheet"-->
 	<link href="css/panels.css" rel="stylesheet">
 	<link href="css/configs.css" rel="stylesheet">
 	<link href="css/moode.css" rel="stylesheet">
@@ -60,6 +60,8 @@
 	<script src="js/jquery-ui/jquery.ui.tooltip.js" defer></script>
 	<script src="js/jquery-ui/jquery.ui.effect.js" defer></script>
 
+	<script src="js/bootstrap-contextmenu.js" defer></script>
+    <script src="js/radio-search.js" defer></script>
 	<script src="js/bootstrap.js" defer></script>
 	<script src="js/bootstrap-select.js" defer></script>
 	<script src="js/jquery.pnotify.js" defer></script>
@@ -88,14 +90,6 @@
 		<script src="js/scripts-library.js" defer></script>
 		<script src="js/scripts-panels.js" defer></script>
 		<!-- endbuild -->
-	<!-- Radio Search -->
-	<?php } elseif ($section == 'radio-search') { ?>
-		<!-- build:js js/radiosearch.min.js defer -->
-		<script src="js/bootstrap-contextmenu.js" defer></script>
-		<script src="js/radio-search.js" defer></script>
-		<!-- endbuild -->
-	<!-- Configs -->
-	<!--removeIf(GENINDEXDEV)-->
 	<?php } else { ?>
 	<!--endRemoveIf(GENINDEXDEV)-->
 		<!--removeIf(NOCONFIGSECTION)-->

@@ -4,12 +4,14 @@ This Fork aims to add a browser to add radio stations from the radio-browser.inf
 without the need to manually add stations.
 
 TODOS:
-- page with search mask integrated into regular ui
-- add/play/favorite directly from new page
-- send telemetry to radio-browser.info
+- [x] page with search mask integrated into regular ui
+  - accessible through configure-modal in footer.php
+- [ ] add/play/favorite stations directly from search mask page
+- [ ] send telemetry to radio-browser.info
   - client used
   - station added to favorites
   - station played
+- [ ] (move js imports into conditional, lead to css not loading in earlier iteration)
 
 # moOde audio player
 
