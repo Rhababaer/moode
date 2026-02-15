@@ -121,20 +121,27 @@ async function render_stationList(){
             if( data.length !== 0 ){
                 retrycount = 0;
                 for( i=0; i < data.length; i++){
-                
+                var favicon = '';
+                if (data[i].favicon !== ""){
+                    favicon = data[i].favicon;
+                } else {
+                    favicon = 'https://www.radio-browser.info/favicon.ico';
+                }
                 output += '<li id="db-' + (i+1) + '">';
                 output += '<div class="db-icon db-song db-browse db-action">';
                 output += '<a class="btn" href="#notarget" data-toggle="context" data-target="#context-menu-radio-browser">';
                 output += '<i class="fas db-browse db-browse-icon" style="content:url(';
-                if (data[i].favicon !== ""){
-                    output += data[i].favicon;
-                } else {
-                    output += 'https://www.radio-browser.info/favicon.ico';
-                }
+                output += favicon;
                 output += '"></i></a></div>';
-                output += '<div class="db-entry db-song db-browse" data-toggle="context" data-target="#context-menu-radio-browser">';
-                output += data[i].name + '  [' + data[i].codec + ' | ' + data[i].bitrate + 'kbps]';
-                output += '<span>' + data[i].countrycode + ' | ' + data[i].tags + '</span>';
+                output += '<div class="db-entry db-song db-browse" data-toggle="context" data-target="#context-menu-radio-browser" style="color:var(--textvariant)">';
+                output += '<span class="rs-name" style="display:inline;color:var(--themetext)">' + data[i].name + '</span>';
+                output += ' [<span class="rs-codec" style="display:inline">' + data[i].codec + '</span>';
+                output += ' | <span class="rs-bitrate" style="display:inline">' + data[i].bitrate +
+                '</span>kbps]<br>';
+                output += '<span class="rs-country" style="display:inline">' + data[i].countrycode + '</span>';
+                output += ' | <span class="rs-genre" style="display:inline">' + data[i].tags + '</span>';
+                output += '<span class="rs-logo" style="display:none">' + favicon + '</span>';
+                output += '<span class=rs-stream" style="display:none">' + data[i].url + '</span>';
                 output += '</div></li>';
 
                 }
