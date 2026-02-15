@@ -127,7 +127,7 @@ async function render_stationList(){
                 } else {
                     favicon = 'https://www.radio-browser.info/favicon.ico';
                 }
-                output += '<li id="db-' + (i+1) + '">';
+                output += '<li id="rs-' + (i+1) + '">';
                 output += '<div class="db-icon db-song db-browse db-action">';
                 output += '<a class="btn" href="#notarget" data-toggle="context" data-target="#context-menu-radio-browser">';
                 output += '<i class="fas db-browse db-browse-icon" style="content:url(';
@@ -176,25 +176,57 @@ function clicky(){
     console.log(UI.dbEntry[0]);
 }
 
+let contextMenuSourceElement = null;
+
+// save clicked list item and highlight by adding the active class
+$(document).on('click.context', '#stations-list li', function(e) {
+    contextMenuSourceElement = $(this);
+    $('#stations-list li.active').removeClass('active');
+    // Add active class to clicked li and store reference
+    $(this).addClass('active');
+});
+// remove active class from list item
+$(document).on('click', function(e) {
+    if (!$(e.target).closest('#stations-list li, #context-menu-radio-browser').length) {
+        $('#stations-list li.active').removeClass('active');
+        contextMenuSourceElement = null;
+    }
+});
+
 $(document).on('click.context.data-api', '#context-menu-radio-browser a', function(e) {
     e.preventDefault();
     const cmd = $(this).data('cmd');
-    const stationElement = $(e.delegateTarget).closest('li');
-    const stationIndex = parseInt(stationElement.attr('id').split('-')[1]) - 1;
+    const stationElement = contextMenuSourceElement;
+    const stationData = {
+        name: stationElement.find('span.rs-name').text(),
+        codec: stationElement.find('span.rs-codec').text(),
+        bitrate: stationElement.find('span.rs-bitrate').text(),
+        country: stationElement.find('span.rs-country').text(),
+        genre: stationElement.find('span.rs-genre').text(),
+        logo: stationElement.find('span.rs-logo').text(),
+        stream: stationElement.find('span.rs-stream').text()
+    };
+    console.log(cmd);
+    console.log(stationElement);
+    console.log('Name: ', stationData.name);
     
     // Get the station data from your rendered list
     // You'll need to store the station data globally or in the DOM
     
     switch(cmd) {
         case 'station2db':
-            console.log('Adding to database:', stationIndex);
+            console.log('Adding to database:', stationData.name);
             // Your custom functionality here
-            handleAddToDatabase(stationIndex);
+            handleAddToDatabase(stationData);
             break;
         case 'station2fav':
-            console.log('Adding to favorites:', stationIndex);
+            console.log('Adding to favorites:', stationData.name);
             // Your custom functionality here
-            handleAddToFavorites(stationIndex);
+            handleAddToFavorites(stationData);
+            break;
+        case 'station2play':
+            console.log('Play now: ', stationData.name);
+            handlePlayNow(stationData);
             break;
         default:
             console.log('Unknown command:', cmd);
@@ -202,21 +234,22 @@ $(document).on('click.context.data-api', '#context-menu-radio-browser a', functi
 });
 
 // Custom handler functions
-function handleAddToDatabase(stationIndex) {
-    // Implement your logic here
-    notify('adding_to_database');
+function handleAddToDatabase(stationData) {
+    notify('Add station...', 'player_info', stationData.name,  2)
     // Example: send data to server
     /*$.get('command/playlist.php?cmd=add_item_to_database&index=' + stationIndex, function() {
         notify('added_to_database');
     });*/
 }
 
-function handleAddToFavorites(stationIndex) {
-    // Implement your logic here
-    notify('adding_favorite');
+function handleAddToFavorites(stationData) {
+    notify('Add station to favorites...', 'player_info', stationData.name,  2)
     // Example: send data to server
     /*$.get('command/playlist.php?cmd=add_item_to_favorites&index=' + stationIndex, function() {
         notify('favorite_added');
     });*/
 }
 
+function handlePlayNow(stationData) {
+    notify('Play station now...', 'player_info', stationData.name,  2)
+}
